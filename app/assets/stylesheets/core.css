@@ -1,0 +1,9 @@
+:root {
+  /* color palette */
+  --primary-bg-color: #f5f5f5;
+  --primary-tx-color: #333;
+  --accent-pri-color: #0078d4;
+  --accent-sec-color: #e34c26;
+  --complement-color: #41a94a;
+  --neutral-color: #777;
+}
