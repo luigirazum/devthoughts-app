@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  after_create :update_posts_counter
+  after_destroy :update_posts_counter
+
   # associations
   belongs_to :author, class_name: 'User', foreign_key: 'author_id', inverse_of: 'posts', counter_cache: :posts_counter
   has_many :comments
@@ -6,5 +9,9 @@ class Post < ApplicationRecord
 
   def most_recent_comments(number = 5)
     comments.limit(number).order(created_at: :desc)
+  end
+
+  def update_posts_counter
+    author.posts_counter = author.posts.count
   end
 end
