@@ -1,9 +1,21 @@
 :root {
   /* color palette */
-  --primary-bg-color: #f5f5f5;
-  --primary-tx-color: #333;
-  --accent-pri-color: #0078d4;
-  --accent-sec-color: #e34c26;
-  --complement-color: #41a94a;
-  --neutral-color: #777;
+
+  /* primary-bg: #f5f5f5 / hsl(0, 0%, 96%) */
+  --primary-bg: hsl(0, 0%, 96%);
+
+  /* primary-tx: #333 / hsl(0, 0%, 20%) */
+  --primary-tx: hsl(0, 0%, 20%);
+
+  /* accent-pri: #0078d4 / hsl(206, 100%, 42%) */
+  --accent-pri: hsl(206, 100%, 42%);
+
+  /* accent-sec: #e34c26 / hsl(12, 77%, 52%) */
+  --accent-sec: hsl(12, 77%, 52%);
+
+  /* complement: #41a94a / hsl(125, 44%, 46%) */
+  --complement: hsl(125, 44%, 46%);
+
+  /* neutral: #777 / hsl(0, 0%, 47%) */
+  --neutral: hsl(0, 0%, 47%);
 }
