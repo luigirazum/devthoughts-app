@@ -5,6 +5,6 @@ class User < ApplicationRecord
   has_many :comments
 
   def most_recent_posts(num = 3)
-    posts.limit(num).order(created_at: :desc)
+    posts.order(created_at: :desc).limit(num)
   end
 end
