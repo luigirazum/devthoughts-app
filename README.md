@@ -103,6 +103,8 @@ To _preserve_ the data we are going to create a [PostgreSQL](https://www.postgre
     - **Create** _Posts_.
     - Leave a _Comment_ (**create**) to any _Post_.
     - Support a _Post_ by giving(**create**) a _Like_ to that _Post_.
+  - The _Data Model_ was created implementing **Rails Migrations**.
+  - _Associations_ were defined at each model `user`, `posts`, `comments` and, `likes`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
