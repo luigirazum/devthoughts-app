@@ -47,19 +47,27 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '.posts_counter validations' do
-    it '- is an <Integer>' do
-      expect(attr_mod({ posts_counter: 'a' })).to_not be_valid
-      expect(attr_mod({ posts_counter: nil })).to_not be_valid
-      expect(attr_mod({ posts_counter: true })).to_not be_valid
-      expect(attr_mod({ posts_counter: 10 })).to be_valid
-    end
+  describe '* methods' do
+    describe '#most_recent_posts' do
+      context "- when a 'User' is created" do
+        it "> should return zero 'posts'" do
+          expect(user.most_recent_posts).to be_empty
+        end
+      end
 
-    it '- is greater than or equal to zero' do
-      expect(attr_mod({ posts_counter: -1 })).to_not be_valid
-      expect(attr_mod({ posts_counter: -10 })).to_not be_valid
-      expect(attr_mod({ posts_counter: 0 })).to be_valid
-      expect(attr_mod({ posts_counter: 5 })).to be_valid
+      context "- when a 'User' has several 'posts'" do
+        it "> should return the three most recent 'posts'" do
+          posts = []
+          %i[1 2 3 4 5 6 7 8].each do |post_number|
+            time = Time.now - (2.hour * post_number.to_s.to_i)
+            posts << Post.create(author: user, title: "Post ##{post_number}", text: "Text for Post ##{post_number}",
+                                 created_at: time, updated_at: time)
+          end
+
+          post1, post2, post3, = posts
+          expect(user.most_recent_posts).to eq([post1, post2, post3])
+        end
+      end
     end
   end
 end
