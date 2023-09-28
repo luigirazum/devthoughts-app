@@ -31,21 +31,37 @@ RSpec.describe Post, type: :model do
         expect(attr_mod({ title: 'a' * 5 })).to be_valid
       end
     end
-  end
 
-  describe '.comments_counter validations' do
-    it '- is an <Integer>' do
-      expect(attr_mod({ comments_counter: 'a' })).to_not be_valid
-      expect(attr_mod({ comments_counter: nil })).to_not be_valid
-      expect(attr_mod({ comments_counter: true })).to_not be_valid
-      expect(attr_mod({ comments_counter: 10 })).to be_valid
+    describe '.comments_counter validations' do
+      it '- is an <Integer>' do
+        expect(attr_mod({ comments_counter: 'a' })).to_not be_valid
+        expect(attr_mod({ comments_counter: nil })).to_not be_valid
+        expect(attr_mod({ comments_counter: true })).to_not be_valid
+        expect(attr_mod({ comments_counter: 10 })).to be_valid
+      end
+
+      it '- is greater than or equal to zero' do
+        expect(attr_mod({ comments_counter: -1 })).to_not be_valid
+        expect(attr_mod({ comments_counter: -10 })).to_not be_valid
+        expect(attr_mod({ comments_counter: 0 })).to be_valid
+        expect(attr_mod({ comments_counter: 5 })).to be_valid
+      end
     end
 
-    it '- is greater than or equal to zero' do
-      expect(attr_mod({ comments_counter: -1 })).to_not be_valid
-      expect(attr_mod({ comments_counter: -10 })).to_not be_valid
-      expect(attr_mod({ comments_counter: 0 })).to be_valid
-      expect(attr_mod({ comments_counter: 5 })).to be_valid
+    describe '.likes_counter validations' do
+      it '- is an <Integer>' do
+        expect(attr_mod({ likes_counter: 'a' })).to_not be_valid
+        expect(attr_mod({ likes_counter: nil })).to_not be_valid
+        expect(attr_mod({ likes_counter: true })).to_not be_valid
+        expect(attr_mod({ likes_counter: 10 })).to be_valid
+      end
+
+      it '- is greater than or equal to zero' do
+        expect(attr_mod({ likes_counter: -1 })).to_not be_valid
+        expect(attr_mod({ likes_counter: -10 })).to_not be_valid
+        expect(attr_mod({ likes_counter: 0 })).to be_valid
+        expect(attr_mod({ likes_counter: 5 })).to be_valid
+      end
     end
   end
 end
