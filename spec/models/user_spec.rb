@@ -30,6 +30,36 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe '.posts_counter validations' do
+      it '- is an <Integer>' do
+        expect(attr_mod({ posts_counter: 'a' })).to_not be_valid
+        expect(attr_mod({ posts_counter: nil })).to_not be_valid
+        expect(attr_mod({ posts_counter: true })).to_not be_valid
+        expect(attr_mod({ posts_counter: 10 })).to be_valid
+      end
+
+      it '- is greater than or equal to zero' do
+        expect(attr_mod({ posts_counter: -1 })).to_not be_valid
+        expect(attr_mod({ posts_counter: -10 })).to_not be_valid
+        expect(attr_mod({ posts_counter: 0 })).to be_valid
+        expect(attr_mod({ posts_counter: 5 })).to be_valid
+      end
+    end
+  end
+
+  describe '.posts_counter validations' do
+    it '- is an <Integer>' do
+      expect(attr_mod({ posts_counter: 'a' })).to_not be_valid
+      expect(attr_mod({ posts_counter: nil })).to_not be_valid
+      expect(attr_mod({ posts_counter: true })).to_not be_valid
+      expect(attr_mod({ posts_counter: 10 })).to be_valid
+    end
+
+    it '- is greater than or equal to zero' do
+      expect(attr_mod({ posts_counter: -1 })).to_not be_valid
+      expect(attr_mod({ posts_counter: -10 })).to_not be_valid
+      expect(attr_mod({ posts_counter: 0 })).to be_valid
+      expect(attr_mod({ posts_counter: 5 })).to be_valid
     end
   end
 end
