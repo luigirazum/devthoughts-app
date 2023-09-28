@@ -27,4 +27,31 @@ RSpec.describe Comment, type: :model do
       end
     end
   end
+
+  describe '* methods' do
+    describe '#update_comments_counter' do
+      context "- when 'called'" do
+        it "> should refresh the 'comments_counter'" do
+          post.comments_counter = nil
+          expect(post.comments_counter).to be_nil
+          comment.update_comments_counter
+          expect(post.comments_counter).to eq(1)
+        end
+      end
+
+      context "- when a 'Comment' is created" do
+        it "> should refresh 'comments_counter' increased by 1" do
+          Comment.create(user: commenter, post: comment.post, text: 'Another Comment')
+          expect(post.comments_counter).to eq(comment.post.comments_counter)
+        end
+      end
+
+      context "- when a 'Comment' is deleted" do
+        it "> should refresh 'comments_counter' decreased by 1" do
+          Comment.destroy(comment.id)
+          expect(post.comments_counter).to eq(comment.post.comments_counter)
+        end
+      end
+    end
+  end
 end
