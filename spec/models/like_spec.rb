@@ -18,4 +18,16 @@ RSpec.describe Like, type: :model do
       expect(attr_mod({ post_id: nil })).to_not be_valid
     end
   end
+
+  describe ".create 'Like'" do
+    it "- is succesful just once for a given 'user' at certain 'post'" do
+      expect(like).to be_valid
+      expect(Like.create(user: author, post:).persisted?).to be_falsy
+    end
+
+    it "- is succesful for a different 'user' at certain 'post'" do
+      expect(like).to be_valid
+      expect(Like.create(user:, post:).persisted?).to be_truthy
+    end
+  end
 end
