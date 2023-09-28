@@ -30,4 +30,31 @@ RSpec.describe Like, type: :model do
       expect(Like.create(user:, post:).persisted?).to be_truthy
     end
   end
+
+  describe '* methods' do
+    describe '#update_likes_counter' do
+      context "- when 'called'" do
+        it "> should refresh the 'likes_counter'" do
+          post.likes_counter = nil
+          expect(post.likes_counter).to be_nil
+          like.update_likes_counter
+          expect(post.likes_counter).to eq(1)
+        end
+      end
+
+      context "- when a 'Like' is created" do
+        it "> should refresh 'likes_counter' increased by 1" do
+          Like.create(user:, post: like.post)
+          expect(post.likes_counter).to eq(like.post.likes_counter)
+        end
+      end
+
+      context "- when a 'Like' is deleted" do
+        it "> should refresh 'likes_counter' decreased by 1" do
+          Like.destroy(like.id)
+          expect(post.likes_counter).to eq(like.post.likes_counter)
+        end
+      end
+    end
+  end
 end
