@@ -19,4 +19,12 @@ RSpec.describe Comment, type: :model do
       expect(attr_mod({ post_id: nil })).to_not be_valid
     end
   end
+
+  describe '* attributes' do
+    describe '.text validations' do
+      it '- must be provided' do
+        expect(attr_mod({ text: nil })).to_not be_valid
+      end
+    end
+  end
 end
