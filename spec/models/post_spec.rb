@@ -87,5 +87,30 @@ RSpec.describe Post, type: :model do
         end
       end
     end
+
+    describe '#update_posts_counter' do
+      context "- when 'called'" do
+        it "> should refresh the 'posts_counter'" do
+          user.posts_counter = nil
+          expect(user.posts_counter).to be_nil
+          post.update_posts_counter
+          expect(user.posts_counter).to eq(1)
+        end
+      end
+
+      context "- when a 'Post' is created" do
+        it "> should refresh 'posts_counter' increased by 1" do
+          Post.create(author: post.author, title: 'An extra Post', text: 'Another Post')
+          expect(user.posts_counter).to eq(post.author.posts_counter)
+        end
+      end
+
+      context "- when a 'Post' is deleted" do
+        it "> should refresh 'posts_counter' decreased by 1" do
+          Post.destroy(post.id)
+          expect(user.posts_counter).to eq(post.author.posts_counter)
+        end
+      end
+    end
   end
 end
