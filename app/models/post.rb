@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   # validations
   validates :title, presence: { message: "can't be blank" }
   validates :title, length: { maximum: 250, message: "can't exceed 250 characters" }
+  validates :comments_counter, numericality: { only_integer: true, message: 'must be an integer number' }
+  validates :comments_counter, numericality: { greater_than_or_equal_to: 0, message: "can't be negative" }
 
   # associations
   belongs_to :author, class_name: 'User', foreign_key: 'author_id', inverse_of: 'posts', counter_cache: :posts_counter
