@@ -70,4 +70,27 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '* associations' do
+    context '.posts' do
+      it "=> responds for the has many 'posts'" do
+        association = described_class.reflect_on_association(:posts)
+        expect(association.macro).to eq(:has_many)
+      end
+    end
+
+    context '.comments' do
+      it "=> responds for the has many 'comments'" do
+        association = described_class.reflect_on_association(:comments)
+        expect(association.macro).to eq(:has_many)
+      end
+    end
+
+    context '.likes' do
+      it "=> responds for the has many 'likes'" do
+        association = described_class.reflect_on_association(:likes)
+        expect(association.macro).to eq(:has_many)
+      end
+    end
+  end
 end
