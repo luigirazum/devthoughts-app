@@ -79,7 +79,8 @@ RSpec.describe Post, type: :model do
           %i[1 2 3 4 5 6 7 8].each do |comment_number|
             time = Time.now - (2.hour * comment_number.to_s.to_i)
             user = User.create(name: "User ##{comment_number} Name")
-            comments << Comment.create(user:, post:, text: "Text for Comment ##{comment_number}", created_at: time, updated_at: time)
+            comments << Comment.create(user:, post:, text: "Text for Comment ##{comment_number}", created_at: time,
+                                       updated_at: time)
           end
 
           comment1, comment2, comment3, comment4, comment5, = comments
@@ -110,6 +111,29 @@ RSpec.describe Post, type: :model do
           Post.destroy(post.id)
           expect(user.posts_counter).to eq(post.author.posts_counter)
         end
+      end
+    end
+  end
+
+  describe '* associations' do
+    context '.author' do
+      it "=> responds for belongs to an 'author'" do
+        association = described_class.reflect_on_association(:author)
+        expect(association.macro).to eq(:belongs_to)
+      end
+    end
+
+    context '.comments' do
+      it "=> responds for has many 'comments'" do
+        association = described_class.reflect_on_association(:comments)
+        expect(association.macro).to eq(:has_many)
+      end
+    end
+
+    context '.likes' do
+      it "=> responds for has many 'likes'" do
+        association = described_class.reflect_on_association(:likes)
+        expect(association.macro).to eq(:has_many)
       end
     end
   end
