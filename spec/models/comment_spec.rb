@@ -54,4 +54,20 @@ RSpec.describe Comment, type: :model do
       end
     end
   end
+
+  describe '* associations' do
+    context '.user' do
+      it "=> responds for belongs to an 'user'" do
+        association = described_class.reflect_on_association(:user)
+        expect(association.macro).to eq(:belongs_to)
+      end
+    end
+
+    context '.post' do
+      it "=> responds for belongs to a 'post'" do
+        association = described_class.reflect_on_association(:post)
+        expect(association.macro).to eq(:belongs_to)
+      end
+    end
+  end
 end
