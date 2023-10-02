@@ -20,6 +20,12 @@ RSpec.describe "'Users' - [Controller]", type: :request do
         expect(response).to render_template('users/index')
       end
     end
+
+    context "* 'placeholder text'" do
+      it "- 'body' includes 'list of all Users'" do
+        expect(response.body).to match(/the list of Users/)
+      end
+    end
   end
 
   describe 'GET /show' do
