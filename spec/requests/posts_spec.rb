@@ -47,5 +47,11 @@ RSpec.describe "'Posts' - [Controller]", type: :request do
         expect(response).to render_template('posts/show')
       end
     end
+
+    context "* 'placeholder text'" do
+      it "- 'body' includes 'Details for a given Post'" do
+        expect(response.body).to match(/Details for a given Post/)
+      end
+    end
   end
 end
