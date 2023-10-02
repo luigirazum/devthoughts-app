@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "'Posts' - [Controller]", type: :request do
+RSpec.describe "'Posts' - [Controller]", :requests, type: :request do
   describe "'GET /index' => 'index' action at 'posts' controller", :index do
     before { get user_posts_path({ user_id: 1 }) }
 
