@@ -36,5 +36,16 @@ RSpec.describe "'Posts' - [Controller]", type: :request do
         expect(response).to have_http_status(:success)
       end
     end
+
+    context "* 'template'" do
+      it "- renders 'show' template" do
+        expect(response).to render_template(:show)
+        expect(response).to render_template('show')
+      end
+
+      it "- renders 'posts/show' template" do
+        expect(response).to render_template('posts/show')
+      end
+    end
   end
 end
