@@ -1,12 +1,39 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  subject(:user) { described_class.create(name: 'Name LastName') }
+# Helper methods used in the Specs
+# ************************************************
+# extract the three most recent posts
+# from 'generate_test_posts
+def extract_three_most_recent_posts(posts)
+  post1, post2, post3, = posts
 
+  [post1, post2, post3]
+end
+
+# create some posts for testing using the 'user' as 'author'
+def generate_test_posts(author: user)
+  posts = []
+  %i[1 2 3 4 5 6 7 8].each do |post_number|
+    time = Time.now - (2.hour * post_number.to_s.to_i)
+    posts << Post.create(author:, title: "Post ##{post_number}", text: "Text for Post ##{post_number}",
+                         created_at: time, updated_at: time)
+  end
+
+  posts
+end
+
+# Start of the Specs for 'User' model
+RSpec.describe User, type: :model do
+  let!(:user) { described_class.new(name: 'Name LastName') }
+
+  # 'attr_mod' will allow you to test 'obj' with
+  # the 'mod' attribute passed.
   def attr_mod(mod, obj: user)
     obj[mod.keys.first] = mod.values.first
     obj
   end
+
+  before { user.save }
 
   describe ".new 'User' is valid only:" do
     it '- with valid attributes' do
@@ -57,15 +84,8 @@ RSpec.describe User, type: :model do
 
       context "- when a 'User' has several 'posts'" do
         it "> should return the three most recent 'posts'" do
-          posts = []
-          %i[1 2 3 4 5 6 7 8].each do |post_number|
-            time = Time.now - (2.hour * post_number.to_s.to_i)
-            posts << Post.create(author: user, title: "Post ##{post_number}", text: "Text for Post ##{post_number}",
-                                 created_at: time, updated_at: time)
-          end
-
-          post1, post2, post3, = posts
-          expect(user.most_recent_posts).to eq([post1, post2, post3])
+          posts = generate_test_posts
+          expect(user.most_recent_posts).to eq(extract_three_most_recent_posts(posts))
         end
       end
     end
