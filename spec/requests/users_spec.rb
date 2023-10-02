@@ -29,12 +29,23 @@ RSpec.describe "'Users' - [Controller]", type: :request do
   end
 
   describe "'GET /show' => 'show' action at 'users' controller" do
-    before { get user_path({ id: 1 })}
+    before { get user_path({ id: 1 }) }
 
     context "* 'status'" do
       it '- returns http success/ok' do
         expect(response).to have_http_status(:success)
         expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "* 'template'" do
+      it "- renders 'show' template" do
+        expect(response).to render_template(:show)
+        expect(response).to render_template('show')
+      end
+
+      it "- renders 'users/show' template" do
+        expect(response).to render_template('users/show')
       end
     end
   end
