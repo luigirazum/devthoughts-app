@@ -1,15 +1,20 @@
 require 'rails_helper'
 
+# Start of the Specs for 'Comment' model
 RSpec.describe Like, type: :model do
-  let(:author) { User.create(name: 'Post Author') }
-  let(:user) { User.create(name: 'Liker') }
-  let(:post) { Post.create(title: 'New test post', text: 'Test text for this new post', author:) }
-  subject(:like) { described_class.create(user: author, post:) }
+  let!(:author) { User.create(name: 'Post Author') }
+  let!(:user) { User.create(name: 'Liker') }
+  let!(:post) { Post.create(title: 'New test post', text: 'Test text for this new post', author:) }
+  let!(:like) { described_class.new(user: author, post:) }
 
+  # 'attr_mod' will allow you to test 'obj' with
+  # the 'mod' attribute passed.
   def attr_mod(mod, obj: like)
     obj[mod.keys.first] = mod.values.first
     obj
   end
+
+  before { like.save }
 
   describe ".new 'Comment' is valid only:" do
     it '- with valid attributes' do
