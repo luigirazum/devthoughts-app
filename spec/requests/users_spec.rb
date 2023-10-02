@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe "'Users' - [Controller]", type: :request do
-  describe "'GET /index' => 'index' action at 'users' controller" do
+  describe "'GET /index' => 'index' action at 'users' controller", :index do
     before { get users_path }
 
-    context "* 'status'" do
+    context "* 'status'", :status do
       it 'returns http success' do
         expect(response).to have_http_status(:success)
       end
     end
 
-    context "* 'template'" do
+    context "* 'template'", :template do
       it "- renders 'index' template" do
         expect(response).to render_template(:index)
         expect(response).to render_template('index')
@@ -21,24 +21,24 @@ RSpec.describe "'Users' - [Controller]", type: :request do
       end
     end
 
-    context "* 'placeholder text'" do
+    context "* 'placeholder text'", :placeholder do
       it "- 'body' includes 'the list of Users'" do
         expect(response.body).to match(/the list of Users/)
       end
     end
   end
 
-  describe "'GET /show' => 'show' action at 'users' controller" do
+  describe "'GET /show' => 'show' action at 'users' controller", :show do
     before { get user_path({ id: 1 }) }
 
-    context "* 'status'" do
+    context "* 'status'", :status do
       it '- returns http success/ok' do
         expect(response).to have_http_status(:success)
         expect(response).to have_http_status(:ok)
       end
     end
 
-    context "* 'template'" do
+    context "* 'template'", :template do
       it "- renders 'show' template" do
         expect(response).to render_template(:show)
         expect(response).to render_template('show')
@@ -49,7 +49,7 @@ RSpec.describe "'Users' - [Controller]", type: :request do
       end
     end
 
-    context "* 'placeholder text'" do
+    context "* 'placeholder text'", :placeholder do
       it "- 'body' includes 'Details for a User'" do
         expect(response.body).to match(/Details for a User/)
       end
