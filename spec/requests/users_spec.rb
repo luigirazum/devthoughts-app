@@ -1,10 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  describe 'GET /index' do
-    it 'returns http success' do
-      get '/users/index'
-      expect(response).to have_http_status(:success)
+RSpec.describe "'Users' - [Controller]", type: :request do
+  describe "'GET /index' => 'index' action at 'users' controller" do
+    before { get users_path }
+
+    context "* 'status'" do
+      it 'returns http success' do
+        expect(response).to have_http_status(:success)
+      end
     end
   end
 
