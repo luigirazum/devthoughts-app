@@ -1,15 +1,22 @@
 require 'rails_helper'
 
+# Start of the Specs for 'Comment' model
 RSpec.describe Comment, type: :model do
-  let(:user) { User.create(name: 'Post Author') }
-  let(:commenter) { User.create(name: 'Commenter') }
-  let(:post) { Post.create(title: 'New test post', text: 'Test text for this new post', author: user) }
-  subject(:comment) { described_class.create(text: 'Test text for this new comment', user: commenter, post:) }
+  let!(:user) { User.create(name: 'Post Author') }
+  let!(:commenter) { User.create(name: 'Commenter') }
+  let!(:post) { Post.create(title: 'New test post', text: 'Test text for this new post', author: user) }
+  let!(:comment) { described_class.new(text: 'Test text for this new comment', user: commenter, post:) }
 
+  # Helper method used in the Specs
+  # ************************************************
+  # 'attr_mod' will allow you to test 'obj' with
+  # the 'mod' attribute passed.
   def attr_mod(mod, obj: comment)
     obj[mod.keys.first] = mod.values.first
     obj
   end
+
+  before { comment.save }
 
   describe ".new 'Comment' is valid only:" do
     it '- with valid attributes' do

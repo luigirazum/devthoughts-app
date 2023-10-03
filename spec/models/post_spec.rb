@@ -1,13 +1,43 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
-  let(:user) { User.create(name: 'Post Author') }
-  subject(:post) { described_class.create(title: 'New test post', text: 'Test text for this new post', author: user) }
+# Helper methods used in the Specs
+# ************************************************
+# 'attr_mod' will allow you to test 'obj' with
+# the 'mod' attribute passed.
+def attr_mod(mod, obj: post)
+  obj[mod.keys.first] = mod.values.first
+  obj
+end
 
-  def attr_mod(mod, obj: post)
-    obj[mod.keys.first] = mod.values.first
-    obj
+# extract the five most recent posts
+# from 'generate_test_comments
+def extract_five_most_recent_comments(comments)
+  comment1, comment2, comment3, comment4, comment5, = comments
+
+  [comment1, comment2, comment3, comment4, comment5]
+end
+
+# create some comments for testing using
+#  the current 'post' and generating a
+#  'user' for each 'comment' created
+def generate_test_comments(post: nil)
+  comments = []
+  %i[1 2 3 4 5 6 7 8].each do |comment_number|
+    time = Time.now - (2.hour * comment_number.to_s.to_i)
+    user = User.create(name: "User ##{comment_number} Name")
+    comments << Comment.create(user:, post:, text: "Text for Comment ##{comment_number}", created_at: time,
+                               updated_at: time)
   end
+
+  comments
+end
+
+# Start of the Specs for 'Post' model
+RSpec.describe Post, type: :model do
+  let!(:user) { User.create(name: 'Post Author') }
+  let!(:post) { described_class.new(title: 'New test post', text: 'Test text for this new post', author: user) }
+
+  before { post.save }
 
   describe ".new 'Post' is valid only:" do
     it '- with valid attributes' do
@@ -75,16 +105,8 @@ RSpec.describe Post, type: :model do
 
       context "- when a 'Post' has several 'comments'" do
         it "> should return the five most recent 'comments'" do
-          comments = []
-          %i[1 2 3 4 5 6 7 8].each do |comment_number|
-            time = Time.now - (2.hour * comment_number.to_s.to_i)
-            user = User.create(name: "User ##{comment_number} Name")
-            comments << Comment.create(user:, post:, text: "Text for Comment ##{comment_number}", created_at: time,
-                                       updated_at: time)
-          end
-
-          comment1, comment2, comment3, comment4, comment5, = comments
-          expect(post.most_recent_comments).to eq([comment1, comment2, comment3, comment4, comment5])
+          comments = generate_test_comments(post:)
+          expect(post.most_recent_comments).to eq(extract_five_most_recent_comments(comments))
         end
       end
     end
