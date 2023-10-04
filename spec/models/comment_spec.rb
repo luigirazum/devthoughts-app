@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # Start of the Specs for 'Comment' model
-RSpec.describe Comment, type: :model do
+RSpec.describe Comment, :models, type: :model do
   let!(:user) { User.create(name: 'Post Author') }
   let!(:commenter) { User.create(name: 'Commenter') }
   let!(:post) { Post.create(title: 'New test post', text: 'Test text for this new post', author: user) }
@@ -18,7 +18,7 @@ RSpec.describe Comment, type: :model do
 
   before { comment.save }
 
-  describe ".new 'Comment' is valid only:" do
+  describe ".new 'Comment' is valid only:", :valid do
     it '- with valid attributes' do
       expect(comment).to be_valid
       expect(attr_mod({ text: nil })).to_not be_valid
@@ -27,7 +27,7 @@ RSpec.describe Comment, type: :model do
     end
   end
 
-  describe '* attributes' do
+  describe '* attributes', :validations do
     describe '.text validations' do
       it '- must be provided' do
         expect(attr_mod({ text: nil })).to_not be_valid
@@ -35,7 +35,7 @@ RSpec.describe Comment, type: :model do
     end
   end
 
-  describe '* methods' do
+  describe '* methods', :methods do
     describe '#update_comments_counter' do
       context "- when 'called'" do
         it "> should refresh the 'comments_counter'" do
@@ -62,7 +62,7 @@ RSpec.describe Comment, type: :model do
     end
   end
 
-  describe '* associations' do
+  describe '* associations', :associations do
     context '.user' do
       it "=> responds for belongs to an 'user'" do
         association = described_class.reflect_on_association(:user)

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # Start of the Specs for 'Comment' model
-RSpec.describe Like, type: :model do
+RSpec.describe Like, :models, type: :model do
   let!(:author) { User.create(name: 'Post Author') }
   let!(:user) { User.create(name: 'Liker') }
   let!(:post) { Post.create(title: 'New test post', text: 'Test text for this new post', author:) }
@@ -16,7 +16,7 @@ RSpec.describe Like, type: :model do
 
   before { like.save }
 
-  describe ".new 'Comment' is valid only:" do
+  describe ".new 'Comment' is valid only:", :valid do
     it '- with valid attributes' do
       expect(like).to be_valid
       expect(attr_mod({ user_id: nil })).to_not be_valid
@@ -24,7 +24,7 @@ RSpec.describe Like, type: :model do
     end
   end
 
-  describe ".create 'Like'" do
+  describe ".create 'Like'", :validations do
     it "- is succesful just once for a given 'user' at certain 'post'" do
       expect(like).to be_valid
       expect(Like.create(user: author, post:).persisted?).to be_falsy
@@ -36,7 +36,7 @@ RSpec.describe Like, type: :model do
     end
   end
 
-  describe '* methods' do
+  describe '* methods', :methods do
     describe '#update_likes_counter' do
       context "- when 'called'" do
         it "> should refresh the 'likes_counter'" do
@@ -63,7 +63,7 @@ RSpec.describe Like, type: :model do
     end
   end
 
-  describe '* associations' do
+  describe '* associations', :associations do
     context '.user' do
       it "=> responds for belongs to an 'user'" do
         association = described_class.reflect_on_association(:user)
