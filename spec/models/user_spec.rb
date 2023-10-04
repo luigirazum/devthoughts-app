@@ -23,7 +23,7 @@ def generate_test_posts(author: user)
 end
 
 # Start of the Specs for 'User' model
-RSpec.describe User, type: :model do
+RSpec.describe User, :models, type: :model do
   let!(:user) { described_class.new(name: 'Name LastName') }
 
   # 'attr_mod' will allow you to test 'obj' with
@@ -35,14 +35,14 @@ RSpec.describe User, type: :model do
 
   before { user.save }
 
-  describe ".new 'User' is valid only:" do
+  describe ".new 'User' is valid only:", :valid do
     it '- with valid attributes' do
       expect(user).to be_valid
       expect(attr_mod({ name: nil })).to_not be_valid
     end
   end
 
-  describe '* attributes' do
+  describe '* attributes', :validations do
     describe '.name validations' do
       it '- must be provided' do
         expect(attr_mod({ name: nil })).to_not be_valid
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '* methods' do
+  describe '* methods', :methods do
     describe '#most_recent_posts' do
       context "- when a 'User' is created" do
         it "> should return zero 'posts'" do
@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '* associations' do
+  describe '* associations', :associations do
     context '.posts' do
       it "=> responds for the has many 'posts'" do
         association = described_class.reflect_on_association(:posts)

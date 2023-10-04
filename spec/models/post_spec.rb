@@ -33,13 +33,13 @@ def generate_test_comments(post: nil)
 end
 
 # Start of the Specs for 'Post' model
-RSpec.describe Post, type: :model do
+RSpec.describe Post, :models, type: :model do
   let!(:user) { User.create(name: 'Post Author') }
   let!(:post) { described_class.new(title: 'New test post', text: 'Test text for this new post', author: user) }
 
   before { post.save }
 
-  describe ".new 'Post' is valid only:" do
+  describe ".new 'Post' is valid only:", :valid do
     it '- with valid attributes' do
       expect(post).to be_valid
       expect(attr_mod({ title: nil })).to_not be_valid
@@ -49,7 +49,7 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe '* attributes' do
+  describe '* attributes', :validations do
     describe '.title validations' do
       it '- must be provided' do
         expect(attr_mod({ title: nil })).to_not be_valid
@@ -95,7 +95,7 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe '* methods' do
+  describe '* methods', :methods do
     describe '#most_recent_comments' do
       context "- when a 'Post' is created" do
         it "> should return zero 'comments'" do
@@ -137,7 +137,7 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe '* associations' do
+  describe '* associations', :associations do
     context '.author' do
       it "=> responds for belongs to an 'author'" do
         association = described_class.reflect_on_association(:author)
