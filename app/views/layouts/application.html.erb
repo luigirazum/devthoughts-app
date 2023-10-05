@@ -12,6 +12,8 @@
 
   <body>
     <%= render 'application/header' %>
+    <p class="notice <%= 'show' if notice %>"><%= notice %></p>
+    <p class="alert <%= 'show' if alert %>"><%= alert %></p>
     <main>
       <div class="container center flex columns">
         <%= yield %>
