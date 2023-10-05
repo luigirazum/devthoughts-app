@@ -1,0 +1,23 @@
+:root {
+  /* color palette
+   * app-background: #f5f5f5 / hsl(0, 0%, 96%)
+   * app-text: #333 / hsl(0, 0%, 20%) */
+  --app-background: hsl(0, 0%, 93%);
+  --app-white: hsl(0, 0%, 96%);
+  --app-text: hsl(0, 0%, 6%);
+
+  /* primary: #e34c26 / hsl(12, 77%, 52%)
+   * secondary: #0078d4 / hsl(206, 100%, 42%) */
+  --primary: hsl(12, 77%, 52%);
+  --secondary: hsl(206, 100%, 42%);
+
+  /* complement: #41a94a / hsl(125, 44%, 46%)
+   * neutral: #777 / hsl(0, 0%, 47%) */
+  --complement: hsl(125, 44%, 46%);
+  --neutral: hsl(0, 0%, 47%);
+  --more-neutral: hsl(0, 0%, 67%);
+  --light-neutral: hsl(0, 0%, 87%);
+
+  /* transparent */
+  --transparent: transparent;
+}

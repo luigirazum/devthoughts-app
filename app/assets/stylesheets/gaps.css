@@ -1,0 +1,13 @@
+:root {
+  /* gap definitions: rem units */
+  --gap-2-5: calc(var(--spc-base) * 2.5 * 1rem);
+  --gap-2: calc(var(--spc-base) * 2 * 1rem);
+  --gap-1-75: calc(var(--spc-base) * 1.75 * 1rem);
+  --gap-1-5: calc(var(--spc-base) * 1.5 * 1rem);
+  --gap-1-25: calc(var(--spc-base) * 1.25 * 1rem);
+  --gap-1: calc(var(--spc-base) * 1 * 1rem);
+  --gap-0-75: calc(var(--spc-base) * 0.75 * 1rem);
+  --gap-0-5: calc(var(--spc-base) * 0.5 * 1rem);
+  --gap-0-25: calc(var(--spc-base) * 0.25 * 1rem);
+  --gap-0-125: calc(var(--spc-base) * 0.125 * 1rem);
+}

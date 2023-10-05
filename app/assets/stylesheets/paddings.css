@@ -1,0 +1,12 @@
+:root {
+  /* Padding definitions: em units */
+  --pad-2: calc(var(--spc-base) * 2 * 1em);
+  --pad-1-75: calc(var(--spc-base) * 1.75 * 1em);
+  --pad-1-5: calc(var(--spc-base) * 1.5 * 1em);
+  --pad-1-25: calc(var(--spc-base) * 1.25 * 1em);
+  --pad-1: calc(var(--spc-base) * 1 * 1em);
+  --pad-0-75: calc(var(--spc-base) * 0.75 * 1em);
+  --pad-0-5: calc(var(--spc-base) * 0.5 * 1em);
+  --pad-0-25: calc(var(--spc-base) * 0.25 * 1em);
+  --pad-0-125: calc(var(--spc-base) * 0.125 * 1em);
+}
