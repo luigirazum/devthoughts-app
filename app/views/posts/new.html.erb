@@ -1,0 +1,18 @@
+<section id="new-post" class="center">
+  <h2>New Post</h2>
+  <%= form_with model: post, url: user_posts_path, method: :post, local: true, scope: :post, class: 'flex columns form' do |f| %>
+    <%= f.hidden_field :author_id, value: post.author_id %>
+    <div class="field flex columns">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: 'input' %>
+    </div>
+    <div class="field flex columns">
+      <%= f.label :message %><br>
+      <%= f.text_area :text, size: "60x14", class: 'input' %>
+    </div>
+
+    <div>
+      <%= f.submit "Publish", class: 'btn btn-submit' %>
+    </div>
+  <% end %>
+</section>

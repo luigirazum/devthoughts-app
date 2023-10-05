@@ -2,6 +2,11 @@
   <%= image_tag user.photo %>
 </div>
 <div class="description flex columns">
-  <h2><%= user %></h2>
+  <div class="user-title">
+    <h2><%= user %></h2>
+    <% if local_assigns[:create_post] %>
+      <%= link_to 'New Post', new_user_post_path(current_user), class: 'btn' %>
+    <% end %>
+  </div>
   <%= render partial: 'counter', locals: { counter: { name: 'Total Posts', total: user.posts_counter } } %>
 </div>
