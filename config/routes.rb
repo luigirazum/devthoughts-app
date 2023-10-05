@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'likes/create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   constraints(id: /\d+/, user_id: /\d+/, author_id: /\d+/) do

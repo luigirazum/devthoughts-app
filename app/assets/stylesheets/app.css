@@ -134,6 +134,10 @@ a {
 }
 
 .btn-like {
+  cursor: pointer;
+  border: none;
+  padding-block: var(--pad-0-25);
+  padding-inline: var(--pad-0-75);
   background-color: var(--complement);
 }
 
@@ -237,6 +241,7 @@ section {
 }
 
 .counters {
+  margin-inline-start: auto;
   justify-content: end;
   font-size: var(--fs-counters);
   font-weight: var(--fw-regular);
@@ -261,7 +266,7 @@ section {
 }
 
 .post-footer {
-  justify-content: space-between;
+  gap: var(--gap-1-5);
   align-items: center;
 }
 

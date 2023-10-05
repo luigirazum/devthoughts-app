@@ -14,6 +14,7 @@
   <p class="content"><%= post.text %></p>
   <div class="flex post-footer">
     <%= link_to 'New comment', new_user_post_comment_path(current_user, post), class: 'btn btn-new' %>
+    <%= button_to "Like this Post", user_post_likes_path(current_user, post), method: :post, class: 'btn btn-like' %>
     <div class="flex counters">
       <%= render partial: 'counter', locals: { counter: { name: 'Comments', total: post.comments_counter } } %>
       <%= render partial: 'counter', locals: { counter: { name: 'Likes', total: post.likes_counter } } %>
