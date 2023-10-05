@@ -5,7 +5,7 @@
   <div class="user-title">
     <h2><%= user %></h2>
     <% if local_assigns[:create_post] %>
-      <%= link_to 'New Post', new_user_post_path(current_user), class: 'btn' %>
+      <%= link_to 'New Post', new_user_post_path(current_user), class: 'btn btn-new' %>
     <% end %>
   </div>
   <%= render partial: 'counter', locals: { counter: { name: 'Total Posts', total: user.posts_counter } } %>

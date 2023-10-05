@@ -260,6 +260,11 @@ section {
   color: var(--secondary);
 }
 
+.post-footer {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .recent-comments {
   background-color: var(--app-white);
   padding: var(--pad-0-75);

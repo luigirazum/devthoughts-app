@@ -1,0 +1,14 @@
+<section id="new-comment" class="center flex columns">
+  <h2>New Comment</h2>
+  <%= form_with model: @comment, url: user_post_comments_url(@post.author, @post), local: true, class: 'flex columns form' do |form| %>
+
+    <div class="field flex columns">
+      <%= form.label :comment %>
+      <%= form.text_area :text, size: "60x14", class: 'input' %>
+    </div>
+
+    <div>
+      <%= form.submit 'Create Comment', class: 'btn btn-submit' %>
+    </div>
+  <% end %>
+</section>

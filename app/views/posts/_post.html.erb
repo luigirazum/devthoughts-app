@@ -12,9 +12,12 @@
     <p>Post #<%= post.id %> | <%= post.title %></p>
   <% end %>
   <p class="content"><%= post.text %></p>
-  <div class="flex counters">
-    <%= render partial: 'counter', locals: { counter: { name: 'Comments', total: post.comments_counter } } %>
-    <%= render partial: 'counter', locals: { counter: { name: 'Likes', total: post.likes_counter } } %>
+  <div class="flex post-footer">
+    <%= link_to 'New comment', new_user_post_comment_path(current_user, post), class: 'btn btn-new' %>
+    <div class="flex counters">
+      <%= render partial: 'counter', locals: { counter: { name: 'Comments', total: post.comments_counter } } %>
+      <%= render partial: 'counter', locals: { counter: { name: 'Likes', total: post.likes_counter } } %>
+    </div>
   </div>
 <% end %>
 
