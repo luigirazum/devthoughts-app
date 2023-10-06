@@ -1,6 +1,7 @@
 <% if local_assigns[:details] %>
   <div class="post-header flex">
-    <h3 class="post-title">Post #<%= post.id %>. <%= post.title %> by <%= post.author %></h3>
+    <h3 class="post-title">Post #<%= post.id %>. <%= post.title %> <span class="post-author">by <%= post.author %></span></h3>
+    <%= button_to "Like", post_likes_path(post), method: :post, class: 'btn btn-pst btn-like' %>
     <div class="flex counters">
       <%= render partial: 'counter', locals: { counter: { name: 'Comments', total: post.comments_counter } } %>
       <%= render partial: 'counter', locals: { counter: { name: 'Likes', total: post.likes_counter } } %>
@@ -8,34 +9,41 @@
     </div>
     <p class="content"><%= post.text %></p>
 <% else %>
-  <%= link_to user_post_path(post.author, post), class:'link link-post' do %>
-    <p>Post #<%= post.id %> | <%= post.title %></p>
-  <% end %>
+  <div class="post-header flex">
+    <%= link_to user_post_path(post.author, post), class:'link link-post post-title' do %>
+      <p>Post #<%= post.id %> | <%= post.title %></p>
+    <% end %>
+    <%= button_to "Like", post_likes_path(post), method: :post, class: 'btn btn-pst btn-like' %>
+  </div>
   <p class="content"><%= post.text %></p>
   <div class="flex post-footer">
-    <%= link_to 'New comment', new_user_post_comment_path(current_user, post), class: 'btn btn-new' %>
-    <%= button_to "Like this Post", user_post_likes_path(current_user, post), method: :post, class: 'btn btn-like' %>
-    <div class="flex counters">
+    <div class="flex counters margin-isa">
       <%= render partial: 'counter', locals: { counter: { name: 'Comments', total: post.comments_counter } } %>
       <%= render partial: 'counter', locals: { counter: { name: 'Likes', total: post.likes_counter } } %>
     </div>
   </div>
 <% end %>
 
-<% if local_assigns[:recent_comments] and post.most_recent_comments.count.positive? %>
+<% if local_assigns[:recent_comments] %>
   <aside class="recent-comments">
-    <h3>Recent comments</h3>
+    <div class="comments-header flex">
+      <h3>Recent comments</h3>
+      <%= link_to 'New comment', new_post_comment_path(post), class: 'btn btn-pst btn-new' %>
+    </div>
     <div class="post-comments">
-      <%= render partial: 'comments/comment', collection: post.most_recent_comments %>
+      <%= render post.most_recent_comments.count.positive? ? post.most_recent_comments : 'no_comments' %>
     </div>
   </aside>
 <% end %>
 
-<% if local_assigns[:all_comments] and post.comments.count.positive? %>
+<% if local_assigns[:all_comments] %>
   <aside class="all-comments">
-    <h3>All comments</h3>
+    <div class="comments-header flex">
+      <h3>All comments</h3>
+      <%= link_to 'New comment', new_post_comment_path(post), class: 'btn btn-pst btn-new' %>
+    </div>
     <div class="post-comments">
-      <%= render partial: 'comments/comment', collection: post.comments %>
+      <%= render posts.comments.count.positive? ? post.comments : 'no-comments' %>
     </div>
   </aside>
 <% end %>
