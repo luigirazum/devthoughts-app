@@ -26,11 +26,10 @@ h2,
 h3,
 h4 {
   font-family: var(--ff-titles);
-  margin-bottom: var(--gap-0-75);
 }
 
 p {
-  margin-bottom: var(--gap-0-5);
+  margin-bottom: inherit;
 }
 
 img { width: 100%; }
@@ -95,14 +94,14 @@ a {
 }
 
 .btn-usr {
-  padding-block: var(--pad-0-75);
+  padding-block: var(--pad-0-5);
 }
 
 .btn-new {
   background-color: var(--primary);
 }
 
-.btn-all {
+.btn-all-posts {
   background-color: var(--secondary);
 }
 
@@ -114,37 +113,36 @@ a {
   background-color: var(--app-text);
 }
 
-.btn-post {
-  font-size: var(--fs-brand);
-  padding-inline: var(--pad-1);
-  padding-block: var(--pad-0-25);
-}
-
-.btn-submit {
+.btn-pst {
   border: none;
   font-size: var(--fs-brand);
   padding-inline: var(--pad-1);
   padding-block: var(--pad-0-25);
 }
 
-.btn-comment,
 .btn-submit {
+  cursor: pointer;
+  border: none;
+  line-height: 1.5;
+  background-color: var(--primary);
+}
+
+.btn-comment {
   background-color: var(--secondary);
 }
 
 .btn-like {
   cursor: pointer;
   border: none;
-  padding-block: var(--pad-0-25);
-  padding-inline: var(--pad-0-75);
   background-color: var(--complement);
+  line-height: 1.5;
 }
 
-.btn-post:hover {
+.btn-pst:hover {
   background-color: var(--more-neutral);
 }
 
-.btn-post:active {
+.btn-pst:active {
   background-color: var(--app-text);
 }
 
@@ -180,6 +178,15 @@ section {
   justify-content: center;
 }
 
+#post-details {
+  background-color: var(--app-white);
+}
+
+#new-post,
+#new-comment {
+  gap: var(--gap-0-75);
+}
+
 .link-user {
   flex-basis: calc(25 * var(--gap-1));
   flex-grow: 1;
@@ -205,17 +212,22 @@ section {
 .description {
   flex-grow: 1;
   padding: var(--gap-2);
-  justify-content: space-between;
+  gap: var(--gap-0-75);
+}
+
+.user-footer {
+  align-items: center;
 }
 
 .counter {
   color: var(--primary);
-  text-align: end;
+  margin-inline-start: auto;
 }
 
 .most-recent-list,
 .all-posts {
   gap: var(--gap-1-5);
+  line-height: 1.5;
 }
 
 .post {
@@ -240,7 +252,6 @@ section {
 }
 
 .counters {
-  margin-inline-start: auto;
   justify-content: end;
   font-size: var(--fs-counters);
   font-weight: var(--fw-regular);
@@ -256,12 +267,23 @@ section {
 }
 
 .post-header {
-  justify-content: space-between;
+  justify-content: end;
+  gap: var(--gap-1-5);
   align-items: center;
 }
 
 .post-title {
   color: var(--secondary);
+  margin-inline-end: auto;
+}
+
+.post-author {
+  color: var(--primary);
+  font-size: var(--fs-base);
+}
+
+.margin-isa {
+  margin-inline-start: auto;
 }
 
 .post-footer {
@@ -279,14 +301,24 @@ section {
   background-color: var(--app-background);
 }
 
+.comments-header {
+  justify-content: space-between;
+}
+
 form {
   gap: var(--gap-0-75);
 }
 
+.form-title {
+  color: var(--secondary);
+}
+
 .field {
-  gap: var(--gap-0-25);
+  gap: var(--gap-0-125);
 }
 
 .input {
   padding: var(--pad-0-5);
+  font-family: var(--ff-text);
+  font-size: var(--fs-base);
 }
