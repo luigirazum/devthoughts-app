@@ -1,6 +1,6 @@
 <section id="new-comment" class="center flex columns">
-  <h2>New Comment</h2>
-  <%= form_with model: @comment, url: user_post_comments_url(@post.author, @post), local: true, class: 'flex columns form' do |form| %>
+  <h2 class="form-title">New Comment</h2>
+  <%= form_with model: @comment, url: post_comments_url(@post), local: true, class: 'flex columns form' do |form| %>
 
     <div class="field flex columns">
       <%= form.label :comment %>
@@ -8,7 +8,7 @@
     </div>
 
     <div>
-      <%= form.submit 'Create Comment', class: 'btn btn-submit' %>
+      <%= form.submit 'Create Comment', class: 'btn btn-pst btn-submit' %>
     </div>
   <% end %>
 </section>

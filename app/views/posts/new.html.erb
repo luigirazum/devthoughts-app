@@ -1,7 +1,6 @@
-<section id="new-post" class="center">
-  <h2>New Post</h2>
-  <%= form_with model: post, url: user_posts_path, method: :post, local: true, scope: :post, class: 'flex columns form' do |f| %>
-    <%= f.hidden_field :author_id, value: post.author_id %>
+<section id="new-post" class="center flex columns">
+  <h2 class="form-title">New Post</h2>
+  <%= form_with model: @post, class: 'flex columns form' do |f| %>
     <div class="field flex columns">
       <%= f.label :title %><br>
       <%= f.text_field :title, class: 'input' %>
@@ -12,7 +11,7 @@
     </div>
 
     <div>
-      <%= f.submit "Publish", class: 'btn btn-submit' %>
+      <%= f.submit "Publish", class: 'btn btn-pst btn-submit' %>
     </div>
   <% end %>
 </section>
