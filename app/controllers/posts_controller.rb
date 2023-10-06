@@ -11,30 +11,34 @@ class PostsController < ApplicationController
   end
 
   def new
-    @current_user = current_user
-    post = Post.new
+    @post = Post.new
+    @post.author = current_user
     respond_to do |format|
-      format.html { render :new, locals: { post: } }
+      format.html { render :new, locals: { post: @post } }
     end
   end
 
   def create
-    post = Post.new(params.require(:post).permit(:title, :text))
+    post = Post.new(post_params)
     post.author = current_user
     respond_to do |format|
       format.html do
         if post.save
-          # success message
-          flash[:success] = 'Post published successfully'
           # redirect to index
-          redirect_to user_posts_path
+          redirect_to user_posts_path(post.author), notice: 'Post published successfully'
         else
           # error message
-          flash.now[:error] = 'Error: Post could not be published'
+          flash[:alert] = 'Error: Post could not be published'
           # render new
-          render :new, locals: { post: }
+          render :new, locals: { post: @post }
         end
       end
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
