@@ -1,0 +1,7 @@
+<div class="photo">
+  <%= image_tag user.photo %>
+</div>
+<div class="description flex columns">
+  <h2><%= user %></h2>
+  <%= render partial: 'counter', locals: { counter: { name: 'Total Posts', total: user.posts_counter } } %>
+</div>

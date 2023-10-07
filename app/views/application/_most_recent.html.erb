@@ -1,0 +1,6 @@
+<section id=<%= local_assigns[:id_selector] %> >
+  <h3><%= local_assigns[:title] %></h3>
+  <div class="most-recent-list flex columns">
+    <%= render partial: local_assigns[:template], collection: local_assigns[:recents] %>
+  </div>
+</section>

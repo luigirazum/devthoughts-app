@@ -1,0 +1,35 @@
+/* font-family: 'Poppins', sans-serif;
+ * light 300, regular 400, semibold 600 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* font-family: 'Roboto Flex', sans-serif;
+ * light 300, regular 400, semibold 600, bold 700, black 900 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,600;8..144,700;8..144,900&display=swap');
+
+:root {
+  /* font-families */
+  --font-poppins: 'Poppins', sans-serif;
+  --font-roboto-flex: 'Roboto Flex', sans-serif;
+
+  /* font-weights definitions */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* font-sizes definitions: rem units */
+  --fs-base: 1rem;
+  --fs-h1: calc(var(--fs-base) * 1.8);
+  --fs-h2: calc(var(--fs-base) * 1.6);
+  --fs-h3: calc(var(--fs-base) * 1.3);
+  --fs-h4: calc(var(--fs-base) * 1.15);
+  --fs-counters: calc(var(--fs-base) * 0.9);
+  --fs-brand: calc(var(--fs-base) * 0.85);
+  --fs-footer: calc(var(--fs-base) * 0.75);
+
+  /* font-family assignments */
+  --ff-titles: var(--font-poppins);
+  --ff-controls: var(--font-roboto-flex);
+  --ff-text: var(--font-roboto-flex);
+}

@@ -1,1 +1,3 @@
-<h1>Posts Show will show the Details for a given Post</h1>
+<section id="post-details">
+  <%= render partial: 'posts/post', locals: { post: @post, details: true, all_comments: true }%>
+</section>
