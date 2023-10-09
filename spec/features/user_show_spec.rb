@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.feature 'User Show Page' do
@@ -60,3 +61,4 @@ RSpec.feature 'User Show Page' do
     expect(current_path).to eq(user_posts_path(@user1))
   end
 end
+# rubocop:enable Metrics/BlockLength
