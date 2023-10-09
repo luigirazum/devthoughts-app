@@ -3,5 +3,10 @@
 </div>
 <div class="description flex columns">
   <h2><%= user %></h2>
-  <%= render partial: 'counter', locals: { counter: { name: 'Total Posts', total: user.posts_counter } } %>
+  <div class="user-footer flex">
+    <% if local_assigns[:create_post] %>
+      <%= link_to 'New Post', new_post_path, class: 'btn btn-usr btn-new' %>
+    <% end %>
+    <%= render partial: 'counter', locals: { counter: { name: 'Total Posts', total: user.posts_counter } } %>
+  </div>
 </div>

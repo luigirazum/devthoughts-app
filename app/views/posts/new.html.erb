@@ -1,0 +1,17 @@
+<section id="new-post" class="center flex columns">
+  <h2 class="form-title">New Post</h2>
+  <%= form_with model: @post, class: 'flex columns form' do |f| %>
+    <div class="field flex columns">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: 'input' %>
+    </div>
+    <div class="field flex columns">
+      <%= f.label :message %><br>
+      <%= f.text_area :text, size: "60x14", class: 'input' %>
+    </div>
+
+    <div>
+      <%= f.submit "Publish", class: 'btn btn-pst btn-submit' %>
+    </div>
+  <% end %>
+</section>

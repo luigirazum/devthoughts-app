@@ -1,12 +1,13 @@
 <section id="user-details" class="flex no-border">
-  <%= render partial: 'users/user_basic', locals: { user: @user } %>
+  <%= render partial: 'users/user_basic', locals: { user: @user, create_post: true } %>
 </section>
 <section id="user-posts" class="flex columns">
   <h3>All posts</h3>
   <div class="all-posts flex columns">
-    <%= render partial: 'post', layout: 'article_border', collection: @posts, locals: { recent_comments: true } %>
+    <% if @posts.count.positive? %>
+      <%= render partial: 'post', layout: 'article_border', collection: @posts, locals: { recent_comments: true } %>
+    <% else %>
+      <%= render 'no_posts' %>
+    <% end %>
   </div>
-</section>
-<section id="user-actions" class="flex no-border">
-  <%= link_to 'Create Post', user_posts_path(@user), class: 'btn btn-usr btn-new' %>
 </section>
