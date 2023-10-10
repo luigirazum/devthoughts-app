@@ -3,10 +3,10 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @like = @post.likes.build(user: current_user)
     if @like.save
-      redirect_to user_post_path(user_id: current_user.id, id: @post.id), notice: 'You Liked the post successfully.'
+      flash[:notice] = "#{@post.author.name} says thank's for your Like."
     else
-      flash[:alert] = 'Unable to give a like to the post.'
-      redirect_to user_post_path(user_id: current_user.id, id: @post.id)
+      flash[:alert] = "You've already liked the post."
     end
+    redirect_back(fallback_location: user_post_path(@post.author, @post))
   end
 end
