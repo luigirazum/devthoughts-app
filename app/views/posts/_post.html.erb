@@ -43,7 +43,7 @@
       <%= link_to 'New comment', new_post_comment_path(post), class: 'btn btn-pst btn-new' %>
     </div>
     <div class="post-comments">
-      <%= render post.comments.count.positive? ? post.comments : 'no-comments' %>
+      <%= render post.comments.count.positive? ? post.comments : 'no_comments' %>
     </div>
   </aside>
 <% end %>
