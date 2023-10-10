@@ -133,7 +133,7 @@ RSpec.describe "Page: 'posts#index' | http://127.0.0.1:3000/users/:id/posts", :i
         page.all('form').each_with_index do |form, i|
           expect(form).to have_button('Like')
           form.click_on('Like')
-          expect(page).to have_current_path(user_post_path(user, posts[i]))
+          expect(page).to have_current_path(user_posts_path(user))
           expect(page).to have_css('p', text: /Likes: #{posts[i].likes_counter_was + 1}/)
         end
       end

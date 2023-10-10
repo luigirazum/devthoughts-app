@@ -57,10 +57,9 @@ RSpec.describe "Page: 'posts#show' | http://127.0.0.1:3000/users/:user_id/posts/
       it '> it shows the username of each commentor' do
         selector = 'aside.all-comments'
         within(selector) do
-          page.all('p.comment').each_with_index do |comment, i|
+          page.all('.comment').each_with_index do |comment, i|
             expect(comment).to have_content("#{comments[i].user.name}: #{comments[i].text}")
             expect(comment).to have_css('span', text: /#{comments[i].user.name}:/)
-            expect(comment).to have_content(/: #{comments[i].text}/)
           end
         end
       end
@@ -68,8 +67,9 @@ RSpec.describe "Page: 'posts#show' | http://127.0.0.1:3000/users/:user_id/posts/
       it '> it shows the comment each commentor left' do
         selector = 'aside.all-comments'
         within(selector) do
-          page.all('p.comment').each_with_index do |comment, i|
-            expect(comment).to have_content(/: #{comments[i].text}/)
+          page.all('.comment').each_with_index do |comment, i|
+            expect(comment).to have_content("#{comments[i].user.name}: #{comments[i].text}")
+            expect(comment).to have_css('span', text: /#{comments[i].user.name}:/)
           end
         end
       end
