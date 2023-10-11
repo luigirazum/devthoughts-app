@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       # success message
-      redirect_to user_post_url(@post.author, @post), notice: 'Comment published successfully.'
+      redirect_to user_post_path(@post.author, @post), notice: 'Comment published successfully.'
     else
       flash[:alert] = 'Error: Comment could not be published'
       render :new, locals: { comment: @comment }

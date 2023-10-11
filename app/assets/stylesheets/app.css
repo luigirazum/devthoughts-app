@@ -305,6 +305,10 @@ section {
   justify-content: space-between;
 }
 
+.commenter {
+  font-weight: var(--fw-semibold);
+}
+
 form {
   gap: var(--gap-0-75);
 }
