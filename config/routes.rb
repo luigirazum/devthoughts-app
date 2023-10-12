@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'auth',
-                     path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',
-                                   confirmation: 'verification', unlock: 'unblock', registration: 'register',
-                                   sign_up: 'cmon_let_me_in' }
+  devise_for :users, path: '/',
+                     path_names: { sign_in: 'login', sign_out: 'logout', password: 'reset',
+                                   confirmation: 'confirm', unlock: 'unblock', registration: 'register',
+                                   sign_up: 'signup' }
 
   devise_scope :user do
-    get '/users/sign_out', to: 'devise/sessions#destroy'
-    root to: 'devise/sessions#new'
+    get 'login', to: 'devise/sessions#new'
+    get 'logout', to: 'devise/sessions#destroy'
+    get 'signup', to: 'devise/registrations#new'
+    # root to: 'devise/sessions#new'
   end
+
   constraints(id: /\d+/, user_id: /\d+/, author_id: /\d+/) do
     resources :posts, only: %i[new create] do
       resources :comments, only: %i[new create]
@@ -20,5 +23,5 @@ Rails.application.routes.draw do
 
   # # Defines the root path route ("/")
   # # root "articles#index"
-  # root 'users#index'
+  root 'users#index'
 end
