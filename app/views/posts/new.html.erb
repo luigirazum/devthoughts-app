@@ -1,17 +1,19 @@
-<section id="new-post" class="center flex columns">
+<section id="new-post" class="form-border">
   <h2 class="form-title">New Post</h2>
-  <%= form_with model: @post, class: 'flex columns form' do |f| %>
+  <%= form_with model: @post, scope: :post, class: 'form' do |f| %>
+    <% render "application/error_messages", resource: @post %>
+
     <div class="field flex columns">
       <%= f.label :title %><br>
-      <%= f.text_field :title, class: 'input' %>
+      <%= f.text_field :title, autofocus: true, class: 'input' %>
     </div>
     <div class="field flex columns">
       <%= f.label :message %><br>
       <%= f.text_area :text, size: "60x14", class: 'input' %>
     </div>
 
-    <div>
-      <%= f.submit "Publish", class: 'btn btn-pst btn-submit' %>
+    <div class="form-actions flex">
+      <%= f.submit "Publish", class: 'btn btn-frm' %>
     </div>
   <% end %>
 </section>
