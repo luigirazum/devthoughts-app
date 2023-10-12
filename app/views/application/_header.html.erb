@@ -7,9 +7,24 @@
       <% end %>
       <ul class="flex nav-links">
         <li class="nav-link">
-          <%= link_to 'Home', root_path, class:'link link-txt' %>
-          <%= link_to('Users', users_path, class: 'link link-txt') unless current_page? 'users#index' %>
-          <%= link_to('Back', :back, class: 'link link-txt') unless current_page? root_path %>
+          <% if current_user %>
+            <%= link_to 'Home', root_path, class:'link link-txt' %>
+            <%= link_to('Users', users_path, class: 'link link-txt') unless current_page? 'users#index' %>
+            <%= link_to('Back', :back, class: 'link link-txt') unless current_page? root_path %>
+            <li class="current-user flex">
+              <p class="current-info">Current user:</p>
+              <%= link_to(current_user, user_path(current_user), class: 'link link-txt link-cus') %>
+              <%= link_to 'Log out', destroy_session_path(current_user), class: 'link link-txt link-cus' %>
+            </li>
+          <% else %>
+            <%- if (!current_user && current_page?('login')) || %w[registrations passwords confirmations].include?(controller_name) %>
+              <%= link_to "Log in", new_user_session_path, class: 'link link-txt' %>
+            <% end %>
+
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Sign up", new_registration_path(resource_name), class: 'link link-txt ' %>
+            <% end %>
+          <% end %>
         </li>
       </ul>
     </nav>
