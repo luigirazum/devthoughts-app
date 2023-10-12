@@ -12,8 +12,8 @@
 
   <body>
     <%= render 'application/header' %>
-    <p class="notice <%= 'show' if notice %>"><%= notice %></p>
-    <p class="alert <%= 'show' if alert %>"><%= alert %></p>
+    <p class="flash flash-notice<%= ' flash-show' if flash[:notice] %>"><%= flash[:notice] %></p>
+    <p class="flash flash-alert<%= ' flash-show' if flash[:alert] %>"><%= flash[:alert] %></p>
     <main>
       <div class="container center flex columns">
         <%= yield %>
