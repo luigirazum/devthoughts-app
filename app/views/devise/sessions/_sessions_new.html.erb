@@ -1,0 +1,26 @@
+<h2 class="form-title">Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'flex form') do |f| %>
+  <div class="field flex columns">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
+  </div>
+
+  <div class="field flex columns">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: 'input' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field field-check flex">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="form-actions flex">
+    <%= f.submit "Log in", class: 'btn btn-frm' %>
+  </div>
+<% end %>
+
+<%= render partial: 'devise/shared/devise_links', layout: 'div_layout', locals: { id_selector: 'devise-links', styles: 'flex' } %>
