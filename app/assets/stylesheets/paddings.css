@@ -1,5 +1,7 @@
 :root {
   /* Padding definitions: em units */
+  --pad-3: calc(var(--spc-base) * 3 * 1em);
+  --pad-2-5: calc(var(--spc-base) * 2.5 * 1em);
   --pad-2: calc(var(--spc-base) * 2 * 1em);
   --pad-1-75: calc(var(--spc-base) * 1.75 * 1em);
   --pad-1-5: calc(var(--spc-base) * 1.5 * 1em);

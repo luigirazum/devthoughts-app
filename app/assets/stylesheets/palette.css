@@ -11,12 +11,18 @@
   --primary: hsl(12, 77%, 52%);
   --secondary: hsl(206, 100%, 42%);
 
-  /* complement: #41a94a / hsl(125, 44%, 46%)
-   * neutral: #777 / hsl(0, 0%, 47%) */
+  /* complement: #41a94a / hsl(125, 44%, 46%) */
   --complement: hsl(125, 44%, 46%);
-  --neutral: hsl(0, 0%, 47%);
-  --more-neutral: hsl(0, 0%, 67%);
-  --light-neutral: hsl(0, 0%, 87%);
+
+  /* neutral: #777 / hsl(0, 0%, 47%) */
+  --neutral: hsl(0, 0%, 45%);
+  --neutral-65: hsl(0, 0%, 65%);
+  --neutral-85: hsl(0, 0%, 85%);
+  --neutral-90: hsl(0, 0%, 90%);
+
+  /* for flash messages */
+  --flash-notice: hsl(125, 44%, 66%);
+  --flash-alert: hsl(0, 90%, 65%);
 
   /* transparent */
   --transparent: transparent;

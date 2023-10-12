@@ -1,25 +1,13 @@
 :root {
   /* borders definitions */
-  --border-simple-transparent: 1px solid var(--transparent);
-  --border-bold-transparent: 2px solid var(--transparent);
-  --border-black-transparent: 3px solid var(--transparent);
-  --border-simple-primary: 1px solid var(--primary);
-  --border-bold-primary: 2px solid var(--primary);
-  --border-black-primary: 3px solid var(--primary);
-  --border-simple-secondary: 1px solid var(--secondary);
-  --border-bold-secondary: 2px solid var(--secondary);
-  --border-black-secondary: 3px solid var(--secondary);
-  --border-simple-neutral: 1px solid var(--neutral);
-  --border-bold-neutral: 2px solid var(--neutral);
-  --border-black-neutral: 3px solid var(--neutral);
-  --border-simple-more-neutral: 1px solid var(--more-neutral);
-  --border-bold-more-neutral: 2px solid var(--more-neutral);
-  --border-black-more-neutral: 3px solid var(--more-neutral);
-  --border-simple-light-neutral: 1px solid var(--light-neutral);
-  --border-bold-light-neutral: 2px solid var(--light-neutral);
-  --border-black-light-neutral: 3px solid var(--light-neutral);
+  --bd-lig: 1px solid;
+  --bd-reg: 2px solid;
+  --bd-sbld: 3px solid;
+  --bd-bold: 4px solid;
+  --bd-black: 5px solid;
 
   /* box-shadows */
-  --boxshadow-simple: 0 0 6px;
-  --boxshadow-simple-more-neutral: var(--boxshadow-simple) var(--more-neutral);
+  --bx-sdw-lig: 0 0 4px;
+  --bx-sdw-reg: 0 0 6px;
+  --bx-sdw-bold: 0 0 9px;
 }
