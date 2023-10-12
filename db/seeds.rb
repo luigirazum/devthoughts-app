@@ -5,54 +5,62 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-grace_bio = ['Grace, recruiter, is a technical recruiter at a large tech company. She is responsible',
-  'for finding and hiring the best software engineers. She is also a great networker and',
-  'is able to build relationships with potential candidates.']
-clara_bio = ['Clara, software engineer, is a full-stack engineer at Google. She is passionate about building',
-  'scalable and reliable software. She is also a strong advocate for diversity and inclusion in',
-  'the tech industry.']
-daniel_bio = ['Daniel, developer, is a freelance web developer. He is skilled in a variety of programming',
-   'languages and frameworks. He is also a creative thinker and is always looking for new ways',
-   'to solve problems.']
-jackson_bio = ['Jackson, developer, is a freelance developer. He is skilled in a variety of programming',
-   'languages and frameworks. He is also a creative thinker and is always looking for new ways',
-   'to solve problems.']
-ava_bio = ['Ava, student, is a third-year computer science major at Stanford University. She is passionate',
-'about using technology to solve social problems. She is also a member of the university\'s',
-'robotics team and has developed a mobile app that helps people with disabilities navigate their',
-'surroundings.']
-tom_bio = ['Tom, student, is a senior in high school. He is undecided about his future career, but he is',
-'interested in business and technology. He is also a member of the school\'s debate team and',
-'is passionate about public speaking.']
-henry_bio = ['Henry, student, is a first-year medical student at Harvard University. He is passionate about',
-  'medicine and is committed to helping others. He is also a member of the university\'s pre-med',
-  'club and is involved in several research projects.']
-isabella_bio = ['Isabella, teacher, is a kindergarten teacher in San Francisco. She loves working with young',
-  'children and helping them learn and grow. She is also a creative thinker and is always coming',
-  'up with new ways to make learning fun.']
-ben_bio = ['Ben, teacher, is a high school math teacher in New York City. He is committed to helping his students',
-'succeed and has been named Teacher of the Year twice. He is also a mentor to new teachers and is',
-'passionate about improving the education system.']
-ethan_bio = ['Ethan, manager, is a product manager at a tech startup. He is responsible for the development and',
-  'launch of new products. He is also a great communicator and is able to build consensus among',
-  'stakeholders.']
-luis_bio = ['Currently studying at Microverse.']
-frank_bio = ['Frank, consultant, is a management consultant at McKinsey & Company. He helps businesses improve',
-  'their operations and achieve their goals. He is also a strong analytical thinker and is able to',
-  'identify and solve complex problems.']
+def create_username(name: :user)
+  name.to_s.capitalize
+end
 
-User.create(name: 'Grace', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=grace', bio: grace_bio.join(' '))
-User.create(name: 'Clara', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=clara', bio: clara_bio.join(' '))
-User.create(name: 'Daniel', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=daniel', bio: daniel_bio.join(' '))
-User.create(name: 'Evita', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=ava', bio: ava_bio.join(' '))
-User.create(name: 'Tommas', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=tom', bio: tom_bio.join(' '))
-User.create(name: 'Henry', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=henry', bio: henry_bio.join(' '))
-User.create(name: 'Isabella', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=isabella', bio: isabella_bio.join(' '))
-User.create(name: 'Benito', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=ben', bio: ben_bio.join(' '))
-User.create(name: 'Ethan', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=ethan', bio: ethan_bio.join(' '))
-User.create(name: 'Luigi', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=luis', bio: luis_bio.join(' '))
-User.create(name: 'Frank', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=frank', bio: frank_bio.join(' '))
-User.create(name: 'Jackson', photo: 'https://plchldr.co/i/75?bg=252f3f&fc=ffffff&text=jackson', bio: jackson_bio.join(' '))
+def create_photo(name = 'user')
+  "https://makeplaceholder.com?size=100&bg=f4bcae&text=#{name.downcase}&tcolor=ffffff&as=png"
+end
+
+def create_bio(user: :user)
+  grace_bio = ['Grace, recruiter, is a technical recruiter at a large tech company. She is responsible',
+    'for finding and hiring the best software engineers. She is also a great networker and',
+    'is able to build relationships with potential candidates.']
+  clara_bio = ['Clara, software engineer, is a full-stack engineer at Google. She is passionate about building',
+    'scalable and reliable software. She is also a strong advocate for diversity and inclusion in',
+    'the tech industry.']
+  daniel_bio = ['Daniel, developer, is a freelance web developer. He is skilled in a variety of programming',
+    'languages and frameworks. He is also a creative thinker and is always looking for new ways',
+    'to solve problems.']
+  jackson_bio = ['Jackson, developer, is a freelance developer. He is skilled in a variety of programming',
+    'languages and frameworks. He is also a creative thinker and is always looking for new ways',
+    'to solve problems.']
+  ava_bio = ['Ava, student, is a third-year computer science major at Stanford University. She is passionate',
+  'about using technology to solve social problems. She is also a member of the university\'s',
+  'robotics team and has developed a mobile app that helps people with disabilities navigate their',
+  'surroundings.']
+  tom_bio = ['Tom, student, is a senior in high school. He is undecided about his future career, but he is',
+  'interested in business and technology. He is also a member of the school\'s debate team and',
+  'is passionate about public speaking.']
+  henry_bio = ['Henry, student, is a first-year medical student at Harvard University. He is passionate about',
+    'medicine and is committed to helping others. He is also a member of the university\'s pre-med',
+    'club and is involved in several research projects.']
+  isabella_bio = ['Isabella, teacher, is a kindergarten teacher in San Francisco. She loves working with young',
+    'children and helping them learn and grow. She is also a creative thinker and is always coming',
+    'up with new ways to make learning fun.']
+  ben_bio = ['Ben, teacher, is a high school math teacher in New York City. He is committed to helping his students',
+  'succeed and has been named Teacher of the Year twice. He is also a mentor to new teachers and is',
+  'passionate about improving the education system.']
+  ethan_bio = ['Ethan, manager, is a product manager at a tech startup. He is responsible for the development and',
+    'launch of new products. He is also a great communicator and is able to build consensus among',
+    'stakeholders.']
+  luis_bio = ['Currently studying at Microverse.']
+  frank_bio = ['Frank, consultant, is a management consultant at McKinsey & Company. He helps businesses improve',
+    'their operations and achieve their goals. He is also a strong analytical thinker and is able to',
+    'identify and solve complex problems.']
+
+  send(user.to_s.concat('_bio').to_sym, join(' '))
+end
+
+def user_params(name: :user)
+  { name: create_username(:name), photo: create_photo(:name), bio: create_bio(user: :name) }
+end
+
+users = %i[grace clara daniel evita tommas henry isabella benito ethan luigi frank jackson cooper]
+users.each do |user_name|
+  User.create(user_params(name: user_name))
+end
 
 grace = User.find_by(name: 'Grace')
 clara = User.find_by(name: 'Clara')
