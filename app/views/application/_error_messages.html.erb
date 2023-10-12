@@ -1,0 +1,3 @@
+<% if resource.errors.any? %>
+  <%= flash[:alert] = resource.errors.full_messages.first %>
+<% end %>
