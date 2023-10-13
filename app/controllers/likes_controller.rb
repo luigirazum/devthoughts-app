@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     if @like.save
       flash[:notice] = "#{@post.author.name} says thank's for your Like."
     else
-      flash[:alert] = "You've already liked the post."
+      flash[:alert] = "It seems that you've already liked the post."
     end
     redirect_back(fallback_location: user_post_path(@post.author, @post))
   end

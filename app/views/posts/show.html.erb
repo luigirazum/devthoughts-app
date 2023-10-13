@@ -1,3 +1,9 @@
-<section id="post-details" class="post">
-  <%= render partial: 'posts/post', locals: { post: @post, details: true, all_comments: true }%>
-</section>
+<% @id_selector = capture do %>
+  'post-details'
+<% end %>
+
+<% @classes = capture do %>
+  'post section-border'
+<% end %>
+
+<%= render partial: 'post', layout: 'section_layout', locals: { post: @post, details: true, all_comments: true } %>

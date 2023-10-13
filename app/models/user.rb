@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+  before_create :default_bio_and_photo
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable
+
   # validations
   validates :name, presence: { message: "can't be blank" }
   validates :name, length: { in: 5..50, message: 'must be 5 to 50 characters' }
@@ -16,5 +23,13 @@ class User < ApplicationRecord
 
   def to_s
     name
+  end
+
+  private
+
+  def default_bio_and_photo
+    self.name = name.downcase.capitalize
+    self.photo = "https://makeplaceholder.com?size=100&bg=f4bcae&text=#{name.downcase}&tcolor=ffffff&as=png"
+    self.bio = 'Please, share with the community a little about yourself.'
   end
 end

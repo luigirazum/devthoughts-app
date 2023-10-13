@@ -1,11 +1,19 @@
-<section id="user-details" class="flex no-border">
-  <%= render partial: 'user_basic', locals: { user: @user, create_post: true } %>
-</section>
-<section id="user-bio">
+<% @id_selector = capture do %>
+  'user-details'
+<% end %>
+
+<% @classes = capture do %>
+  'flex section-border'
+<% end %>
+
+<%= render partial: 'user_basic', layout: 'section_layout', locals: { user: @user, create_post: true } %>
+
+<section id="user-bio" class="section-border">
   <h3>Bio</h3>
   <p><%= @user.bio%></p>
 </section>
-<section id="user-recent-posts" class="flex columns">
+
+<section id="user-recent-posts" class="flex columns section-border">
   <h3>Recently posted</h3>
   <div class="most-recent-list flex columns">
     <% if @posts.count.positive? %>
@@ -15,6 +23,7 @@
     <% end %>
   </div>
 </section>
-<section id="user-actions" class="flex no-border">
+
+<section id="user-actions" class="flex">
   <%= link_to 'See all posts', user_posts_path(@user), class: 'btn btn-usr btn-all-posts' %>
 </section>

@@ -1,5 +1,5 @@
 <div class="photo">
-  <%= image_tag user.photo %>
+  <%= image_tag user.photo.nil? ? "https://makeplaceholder.com?size=100&bg=f4bcae&text=#{user.name.downcase}&tcolor=ffffff&as=png" : user.photo %>
 </div>
 <div class="description flex columns">
   <h2><%= user %></h2>
